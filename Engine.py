@@ -2,7 +2,7 @@ import pygame
 import time
 
 
-class Game:
+class Engine:
     
     DEFAULT_SIZE = (640, 480)
     DEFAULT_FPS = 30
@@ -65,5 +65,5 @@ class Game:
         print("This game was played for {0:.2f} seconds".format(self.playtime))
         pygame.display.quit()
 
-g = Game()
+g = Engine()
 g.run()
