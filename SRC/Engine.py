@@ -10,15 +10,17 @@ class Engine:
     START_TIME = 0.0
     playtime = None
 
-    def __init__(self, screen, painter, fps = DEFAULT_FPS):
+    def __init__(self, screen, painter, dj, fps = DEFAULT_FPS):
         self.screen = screen
         self.painter = painter
+        self.dj = dj
         self.fps = fps
         self.clock = pygame.time.Clock()
         self.playtime = self.START_TIME
 
     def run(self):
         self.playing = True
+        self.dj.play()
         while self.playing:
             self.update()
         self.stop()
@@ -44,4 +46,5 @@ class Engine:
 
 
     def stop(self):
+        self.dj.stop()
         self.screen.quit()

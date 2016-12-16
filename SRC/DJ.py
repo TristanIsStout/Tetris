@@ -1,8 +1,10 @@
 import pygame
+import os
 
 class DJ:
 
-    soundtrack = "../MEDIA/Jackpot_By_The_Fat_Rat.mp3"
+    parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+    soundtrack = parent_dir + "/Tetris/MEDIA/theme.mp3"
     
     def __init__(self):
         pygame.mixer.init()
