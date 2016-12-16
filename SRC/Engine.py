@@ -17,10 +17,11 @@ class Engine:
         self.fps = fps
         self.clock = pygame.time.Clock()
         self.playtime = self.START_TIME
+        self.dj.play()
 
     def run(self):
         self.playing = True
-        self.dj.play()
+        self.dj.pause()
         while self.playing:
             self.update()
         self.stop()
