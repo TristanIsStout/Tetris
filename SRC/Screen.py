@@ -1,9 +1,10 @@
 import pygame
 import time
+import constants
 
 class Screen:
     
-    DEFAULT_DIMENSIONS = (640, 480)
+    DEFAULT_DIMENSIONS = constants.SCREEN_DIMENSIONS
     screen = None
     dimensions = DEFAULT_DIMENSIONS
 

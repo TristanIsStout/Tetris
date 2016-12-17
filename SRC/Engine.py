@@ -21,7 +21,7 @@ class Engine:
 
     def run(self):
         self.playing = True
-        # self.dj.pause()
+        self.dj.pause()
         while self.playing:
             self.update()
         self.stop()
