@@ -1,6 +1,8 @@
 import pygame
+import random
 import constants
 from Ball import Ball
+from Grid import Grid
 
 class Playground:
 
@@ -11,6 +13,7 @@ class Playground:
         self.layer = pygame.Surface(constants.PLAYGROUND_DIMENSIONS)
         self.layer.set_colorkey(constants.BLACK)
         self.create_ball()
+        self.create_grid()
 
     def get_layer(self):
         return self.layer
@@ -23,20 +26,43 @@ class Playground:
 
     def update(self):
         self.layer.fill(constants.BLACK)
+        self.update_grid()
         self.ball_position = self.ball.get_position()
         self.layer.blit(self.ball_layer, self.ball_position)
 
+    def create_grid(self):
+        self.grid = Grid(constants.GRID_DIMENSIONS)
+
+    def update_grid(self):
+        x = random.randint(0,10)
+        y = random.randint(0,10)
+        x2 = random.randint(0,10)
+        y2 = random.randint(0,10)
+        self.grid.set_occupied((x,y))
+        self.grid.set_empty((x2, y2))
+        self.grid.update()
+        self.draw_cells()
+
+    def draw_cells(self):
+        graph = self.grid.get_graph()
+        for row in range(0,self.grid.rows):
+            for column in range(0,self.grid.columns):
+                if graph[row][column]:
+                    self.draw_cell((row, column))
+
+    def draw_cell(self, position):
+        x, y = position
+        x = x * constants.BLOCK_SIZE + 1
+        y = y * constants.BLOCK_SIZE + 1
+        cell_rect = (x, y, constants.BLOCK_SIZE -1 , constants.BLOCK_SIZE-1)
+        pygame.draw.rect(self.layer, constants.GREEN, cell_rect)
+
+
     def create_ball(self):
         ball_radius = constants.BLOCK_SIZE / 2
-        ball_position = (20,20)
-        ball_velocity = (0,0)
-        ball_acceleration = (0, 0)
         ball_layer_dimensions = (2*ball_radius, 2*ball_radius)
         self.ball_layer = pygame.Surface(ball_layer_dimensions)
         self.ball_layer.set_colorkey(constants.BLACK)
         ball_rect = (0, 0, 2*ball_radius, 2*ball_radius)
         pygame.draw.rect(self.ball_layer, constants.BLUE, ball_rect)
         self.ball = Ball(ball_radius, constants.PLAYGROUND_DIMENSIONS)
-        self.ball.set_position(ball_position)
-        self.ball.set_velocity(ball_velocity)
-        self.ball.set_acceleration(ball_acceleration)
