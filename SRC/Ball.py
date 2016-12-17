@@ -62,16 +62,20 @@ class Ball:
         self.dx += self.ddx
         self.x += self.dx
         if self.x > self.x_limit:
-            self.x = 0
-        elif self.x < 0:
             self.x = self.x_limit
+            self.dx = -self.dx
+        elif self.x < 0:
+            self.x = 0
+            self.dx = -self.dx
 
     def update_y(self):
         self.dy += self.ddy
         self.y += self.dy
         if self.y > self.y_limit:
-            self.y = 0
-        elif self.y < 0:
             self.y = self.y_limit
+            self.dy = - self.dy
+        elif self.y < 0:
+            self.y = 0
+            self.dy = -self.dy
 
 

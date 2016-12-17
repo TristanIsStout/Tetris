@@ -17,6 +17,7 @@ class Menu:
         self.set_up()
         self.draw_caption()
         self.draw_next_peice_caption()
+        self.draw_next_peice()
         self.draw_mute_sound_caption()
 
     def set_up(self):
@@ -33,6 +34,9 @@ class Menu:
     def draw_next_peice_caption(self):
         self.caption = self.font.render(self.next_peice_text, True, constants.WHITE)
         self.layer.blit(self.caption, self.next_peice_position)
+
+    def draw_next_peice(self):
+        pygame.draw.rect(self.layer, (100, 20, 30), (30, 100, 60, 50))
 
     def draw_mute_sound_caption(self):
         caption = self.font.render("p to toggle sound", True, constants.WHITE)
