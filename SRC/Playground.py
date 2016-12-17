@@ -34,12 +34,6 @@ class Playground:
         self.grid = Grid(constants.GRID_DIMENSIONS)
 
     def update_grid(self):
-        x = random.randint(0,10)
-        y = random.randint(0,10)
-        x2 = random.randint(0,10)
-        y2 = random.randint(0,10)
-        self.grid.set_occupied((x,y))
-        self.grid.set_empty((x2, y2))
         self.grid.update()
         self.draw_cells()
 
