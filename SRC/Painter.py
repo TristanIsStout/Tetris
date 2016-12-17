@@ -1,6 +1,7 @@
 import pygame
 from Ball import Ball
 from Background import Background
+from Menu import Menu
 import constants
 
 class Painter:
@@ -12,9 +13,11 @@ class Painter:
     ball = None
     layers = []
 
-    def __init__(self, dimensions = DEFAULT_DIMENSIONS):
+    def __init__(self, dj, dimensions = DEFAULT_DIMENSIONS):
+        self.dj = dj
         self.dimensions = dimensions
         self.create_background()
+        self.create_menu()
         self.create_ball()
 
     def generate_surfaces_with_positions(self, playtime):
@@ -23,7 +26,13 @@ class Painter:
 
     def update(self):
         position = self.ball.get_position()
-        self.layers[1] = (self.ball_layer, position)
+        self.layers[self.ball_index] = (self.ball_layer, position)
+        self.update_menu()
+
+    def update_menu(self):
+        self.menu.update(0)
+        if self.menu.get_toggle_sound():
+            self.dj.toggle()
 
     def generate_caption(self, playtime):
         return "Tetris"
@@ -31,7 +40,13 @@ class Painter:
     def create_background(self):
         background = Background()
         self.background_layer = background.get_layer()
+        background.set_position(len(self.layers))
         self.layers.append((self.background_layer, constants.ORIGIN))
+
+    def create_menu(self):
+        self.menu = Menu()
+        self.menu.set_position(len(self.layers))
+        self.layers.append((self.menu.get_layer(), constants.MENU_POSITION))
 
     def create_ball(self):
         ball_radius = 20
@@ -49,4 +64,5 @@ class Painter:
         self.ball.set_position(ball_position)
         self.ball.set_velocity(ball_velocity)
         self.ball.set_acceleration(ball_acceleration)
+        self.ball_index = len(self.layers)
         self.layers.append((self.ball_layer, ball_position))

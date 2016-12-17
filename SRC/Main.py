@@ -4,7 +4,7 @@ from Painter import Painter
 from DJ import DJ
 
 screen = Screen()
-painter = Painter()
 dj = DJ()
+painter = Painter(dj)
 e = Engine(screen, painter, dj)
 e.run()

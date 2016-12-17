@@ -18,10 +18,10 @@ class Engine:
         self.clock = pygame.time.Clock()
         self.playtime = self.START_TIME
         self.dj.play()
+        self.dj.pause()
 
     def run(self):
         self.playing = True
-        self.dj.pause()
         while self.playing:
             self.update()
         self.stop()

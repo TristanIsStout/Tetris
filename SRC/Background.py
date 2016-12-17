@@ -5,12 +5,13 @@ class Background:
     
     layer = None
     dimensions = constants.SCREEN_DIMENSIONS
+    index = 0
 
     def __init__(self):
         self.set_up_screen()
         self.draw_playground()
         self.draw_grid()
-        self.draw_playground()
+        self.draw_menu()
 
     def set_up_screen(self):
         self.layer = pygame.Surface(self.dimensions)
@@ -45,6 +46,15 @@ class Background:
             end_y = constants.SCREEN_WIDTH
             end_pos = (end_x, end_y)
             pygame.draw.line(self.layer, constants.LIGHT_GREY, start_pos, end_pos)
+    
+    def draw_menu(self):
+        pygame.draw.rect(self.layer, constants.BLACK, constants.MENU_RECT)
 
     def get_layer(self):
         return self.layer
+
+    def set_position(self, position):
+        self.position = position
+
+    def get_position(self):
+        return self.position
