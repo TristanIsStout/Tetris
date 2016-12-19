@@ -39,13 +39,13 @@ class Ball:
 
     def update(self):
         pressed = pygame.key.get_pressed()
-        if pressed[pygame.K_LEFT]:
+        if pressed[pygame.K_j]:
             self.dx += -2
-        if pressed[pygame.K_RIGHT]:
+        if pressed[pygame.K_l]:
             self.dx += 2
-        if pressed[pygame.K_UP]:
+        if pressed[pygame.K_i]:
             self.dy += -2
-        if pressed[pygame.K_DOWN]:
+        if pressed[pygame.K_k]:
             self.dy += 2
         if self.dy < -12:
             self.dy = -12
