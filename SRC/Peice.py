@@ -92,6 +92,7 @@ class Peice:
             self.fall()
             self.move_left()
             self.move_right()
+            self.move_down()
             self.rotate()
             self.replace()
         return self.grid
@@ -109,6 +110,10 @@ class Peice:
     def move_right(self):
         if self.pressed_keys[pygame.K_RIGHT]:
             self.move(constants.RIGHT)
+
+    def move_down(self):
+        if self.pressed_keys[pygame.K_DOWN]:
+            self.fall_counter += 10
 
     def rotate(self):
         if self.pressed_keys[pygame.K_UP]:
