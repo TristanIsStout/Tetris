@@ -1,5 +1,6 @@
 import pygame
 import copy
+import random
 import constants
 
 class Cell:
@@ -78,12 +79,61 @@ class Peice:
     FALL_AFTER = 10
     pressed_keys = None
 
-    def __init__(self, positions):
+    def __init__(self):
         self.alive = True
         self.cells = []
+        positions = self.generate_positions()
         for position in positions:
             cell = Cell(position)
             self.cells.append(cell)
+
+    def generate_positions(self):
+        start_x = 10
+        start_y = 0
+        p1 = None
+        p2 = None
+        p3 = None
+        p4 = None
+        type = random.randint(0,6)
+        if type == 0:
+           p1 = (start_x, start_y + 0)
+           p2 = (start_x, start_y + 1)
+           p3 = (start_x, start_y + 2)
+           p4 = (start_x, start_y + 3)
+        if type == 1:
+            p1 = (start_x, start_y)
+            p2 = (start_x + 1, start_y)
+            p3 = (start_x + 1, start_y + 1)
+            p4 = (start_x + 1, start_y + 2)
+        if type == 2:
+            p1 = (start_x, start_y)
+            p2 = (start_x+1, start_y)
+            p3 = (start_x+1, start_y-1)
+            p4 = (start_x+1, start_y-2)
+        if type == 3:
+            p1 = (start_x, start_y)
+            p2 = (start_x, start_y+1)
+            p3 = (start_x+1, start_y)
+            p4 = (start_x+1, start_y+1)
+        if type == 4:
+            p1 = (start_x, start_y)
+            p2 = (start_x, start_y+1)
+            p3 = (start_x+1, start_y)
+            p4 = (start_x+1, start_y-1)
+        if type == 5:
+            p1 = (start_x, start_y)
+            p2 = (start_x+1, start_y)
+            p3 = (start_x+1, start_y+1)
+            p4 = (start_x+1, start_y-1)
+        if type == 6:
+            p1 = (start_x, start_y)
+            p2 = (start_x, start_y-1)
+            p3 = (start_x+1, start_y)
+            p4 = (start_x+1, start_y+1)
+
+        positions = [p1, p2, p3, p4]
+        return positions
+
 
     def update(self, grid):
         self.grid = grid
