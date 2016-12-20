@@ -23,6 +23,7 @@ class Grid:
         p4 = (10,3)
         self.ps = [p1, p2, p3, p4]
         self.peice = Peice(self.ps)
+        self.peice.alive = True
 
     def get_graph(self):
         return self.graph
@@ -49,7 +50,9 @@ class Grid:
             self.graph[column][row] = False
 
     def shift_down(self, row):
-        return 0
+        for r in range(row-1, 0):
+            for column in range(self.columns, 0):
+                sel.graph[column][r+1] = self.graph[column][r]
 
     def handle_vertical_lines(self):
         if self.has_vertical_lines():
@@ -58,12 +61,10 @@ class Grid:
 
     def has_vertical_lines(self):
         has_vertical_line = False
-        is_vertical_line = True
         for column in range(0, self.columns):
-            is_vertical_line = True
-            for row in range(0, self.rows):
-                is_vertical_line = is_vertical_line and self.graph[column][row]
-            has_vertical_line = has_vertical_line or is_vertical_line
+            has_vertical_line = has_vertical_line or self.graph[column][0]
+        if self.peice.alive:
+            has_vertical_line = False
         return has_vertical_line
 
     def is_horizontal_line(self, row):
