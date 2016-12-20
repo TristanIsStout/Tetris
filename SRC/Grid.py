@@ -36,26 +36,42 @@ class Grid:
             self.peice = Peice(self.ps)
 
     def handle_horizontal_lines(self):
+        for row in range(self.rows):
+            if self.is_horizontal_line(row) and not self.peice.alive:
+                self.clear_row(row)
+
+    def clear_row(self, row):
+        self.remove(row)
+        self.shift_down(row)
+
+    def remove(self, row):
+        for column in range (0, self.columns):
+            self.graph[column][row] = False
+
+    def shift_down(self, row):
         return 0
 
     def handle_vertical_lines(self):
         if self.has_vertical_lines():
             self.clear()
+            self.peice.alive = False
 
     def has_vertical_lines(self):
         has_vertical_line = False
-        is_vertical_line = False
-        for column in range(0,self.columns):
+        is_vertical_line = True
+        for column in range(0, self.columns):
             is_vertical_line = True
-            for row in range(0,self.rows):
-                is_vertical_line = is_vertical_line and self.graph[row][column]
-                if column == 10:
-                    print("\t: column =  " + str(self.graph[row][column]))
-            if column == 10:
-                has_vertical_line = has_vertical_line or is_vertical_line
-            print("Line " + str(has_vertical_line))
-
+            for row in range(0, self.rows):
+                is_vertical_line = is_vertical_line and self.graph[column][row]
+            has_vertical_line = has_vertical_line or is_vertical_line
         return has_vertical_line
+
+    def is_horizontal_line(self, row):
+        is_horizontal_line = True
+        for column in range(0, self.columns):
+            is_horizontal_line = is_horizontal_line and self.graph[column][row]
+        return is_horizontal_line
+
 
     def clear(self):
         for row in range(0,self.rows):
