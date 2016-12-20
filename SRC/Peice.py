@@ -94,41 +94,41 @@ class Peice:
         p2 = None
         p3 = None
         p4 = None
-        type = random.randint(0,6)
-        if type == 0:
+        peice_type = random.randint(0,6)
+        if peice_type == 0:
            p1 = (start_x, start_y + 0)
            p2 = (start_x, start_y + 1)
            p3 = (start_x, start_y + 2)
            p4 = (start_x, start_y + 3)
-        if type == 1:
+        if peice_type == 1:
             p1 = (start_x, start_y)
-            p2 = (start_x + 1, start_y)
-            p3 = (start_x + 1, start_y + 1)
-            p4 = (start_x + 1, start_y + 2)
-        if type == 2:
+            p2 = (start_x , start_y+1)
+            p3 = (start_x + 1, start_y+1)
+            p4 = (start_x + 2, start_y+1)
+        if peice_type == 2:
             p1 = (start_x, start_y)
-            p2 = (start_x+1, start_y)
-            p3 = (start_x+1, start_y-1)
-            p4 = (start_x+1, start_y-2)
-        if type == 3:
+            p2 = (start_x, start_y+1)
+            p3 = (start_x-1, start_y+1)
+            p4 = (start_x-2, start_y+1)
+        if peice_type == 3:
             p1 = (start_x, start_y)
             p2 = (start_x, start_y+1)
             p3 = (start_x+1, start_y)
             p4 = (start_x+1, start_y+1)
-        if type == 4:
-            p1 = (start_x, start_y)
-            p2 = (start_x, start_y+1)
-            p3 = (start_x+1, start_y)
-            p4 = (start_x+1, start_y-1)
-        if type == 5:
+        if peice_type == 4:
             p1 = (start_x, start_y)
             p2 = (start_x+1, start_y)
-            p3 = (start_x+1, start_y+1)
-            p4 = (start_x+1, start_y-1)
-        if type == 6:
+            p3 = (start_x, start_y+1)
+            p4 = (start_x-1, start_y+1)
+        if peice_type == 5:
             p1 = (start_x, start_y)
-            p2 = (start_x, start_y-1)
-            p3 = (start_x+1, start_y)
+            p2 = (start_x-1, start_y+1)
+            p3 = (start_x, start_y+1)
+            p4 = (start_x+1, start_y+1)
+        if peice_type == 6:
+            p1 = (start_x, start_y)
+            p2 = (start_x-1, start_y)
+            p3 = (start_x, start_y+1)
             p4 = (start_x+1, start_y+1)
 
         positions = [p1, p2, p3, p4]
