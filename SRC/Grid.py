@@ -50,9 +50,14 @@ class Grid:
             self.graph[column][row] = False
 
     def shift_down(self, row):
-        for r in range(row-1, 0):
-            for column in range(self.columns, 0):
-                sel.graph[column][r+1] = self.graph[column][r]
+        for r in range(0, row):
+            curr_row = row - r
+            next_row = curr_row - 1
+            for column in range(0, self.columns):
+                if curr_row != 0:
+                    self.graph[column][curr_row] = self.graph[column][next_row]
+                else:
+                    self.graph[column][r] = False
 
     def handle_vertical_lines(self):
         if self.has_vertical_lines():
