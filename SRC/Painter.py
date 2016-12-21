@@ -22,20 +22,20 @@ class Painter:
         self.create_playground()
 
     def generate_surfaces_with_positions(self, playtime):
-        self.update()
+        self.update(playtime)
         return self.layers
 
-    def update(self):
+    def update(self, time):
         self.update_menu()
-        self.update_playground()
+        self.update_playground(time)
 
     def update_menu(self):
         self.menu.update(0)
         if self.menu.get_toggle_sound():
             self.dj.toggle()
 
-    def update_playground(self):
-        self.playground.update()
+    def update_playground(self, time):
+        self.playground.update(time)
 
     def generate_caption(self, playtime):
         return "Tetris"

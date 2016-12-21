@@ -66,6 +66,13 @@ class Cell:
 
 class Peice:
 
+    time = 0
+    SPEED_1 = 30
+    SPEED_2 = 20
+    SPEED_3 = 10
+    SPEED_4 = 5
+    fall_threshold = 30
+
     cells = None
     next_cells = None
     grid = None
@@ -136,6 +143,7 @@ class Peice:
 
 
     def update(self, grid):
+        self.update_speed()
         self.grid = grid
         if self.alive:
             self.pressed_keys = pygame.key.get_pressed()
@@ -147,9 +155,19 @@ class Peice:
             self.replace()
         return self.grid
 
+    def update_speed(self):
+        if self.time < 10:
+            self.fall_threshold = self.SPEED_1
+        elif self.time < 20:
+            self.fall_threshold = self.SPEED_2
+        elif self.time < 30:
+            self.fall_threshold = self.SPEED_3
+        else:
+            self.fall_threshold = self.SPEED_4
+
     def fall(self):
        self.fall_counter += 1
-       if self.fall_counter >= self.FALL_AFTER:
+       if self.fall_counter >= self.fall_threshold:
             self.move(constants.DOWN)
             self.fall_counter = 0
     

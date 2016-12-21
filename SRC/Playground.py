@@ -22,15 +22,15 @@ class Playground:
     def set_position(self, position):
         self.index = position
 
-    def update(self):
+    def update(self, time):
         self.layer.fill(constants.BLACK)
-        self.update_grid()
+        self.update_grid(time)
 
     def create_grid(self):
         self.grid = Grid(constants.GRID_DIMENSIONS)
 
-    def update_grid(self):
-        self.grid.update()
+    def update_grid(self, time):
+        self.grid.update(time)
         self.draw_cells()
 
     def draw_cells(self):
