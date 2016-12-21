@@ -28,7 +28,7 @@ class Grid:
     def update(self, time):
         Peice.time = time
         self.handle_horizontal_lines()
-        self.handle_vertical_lines(time)
+        self.handle_vertical_lines()
         if self.peice.alive:
             self.graph = self.peice.update(self.graph)
         else:

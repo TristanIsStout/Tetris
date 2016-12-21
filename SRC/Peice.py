@@ -67,6 +67,7 @@ class Cell:
 class Peice:
 
     time = 0
+    time_offset = 0
     SPEED_1 = 30
     SPEED_2 = 20
     SPEED_3 = 10
@@ -156,11 +157,12 @@ class Peice:
         return self.grid
 
     def update_speed(self):
-        if self.time < 10:
+        time = self.time - self.time_offset
+        if time < 10:
             self.fall_threshold = self.SPEED_1
-        elif self.time < 20:
+        elif time < 20:
             self.fall_threshold = self.SPEED_2
-        elif self.time < 30:
+        elif time < 30:
             self.fall_threshold = self.SPEED_3
         else:
             self.fall_threshold = self.SPEED_4
