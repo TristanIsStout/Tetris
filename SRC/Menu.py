@@ -40,7 +40,10 @@ class Menu:
         self.layer.blit(self.caption, self.next_peice_position)
 
     def draw_next_peice(self):
-        pygame.draw.rect(self.layer, (100, 20, 30), (30, 100, 60, 50))
+        peice_position = (40,100)
+        if constants.next_peice != None:
+            self.peice_layer = constants.next_peice.get_layer()
+            self.layer.blit(self.peice_layer, peice_position)
 
     def draw_mute_sound_caption(self):
         caption = self.font.render("p to toggle sound", True, constants.WHITE)
@@ -50,6 +53,7 @@ class Menu:
     def update(self, more_lines):
         self.lines_scored = constants.lines
         self.draw_caption()
+        self.draw_next_peice()
 
     def get_toggle_sound(self):
         toggle = False

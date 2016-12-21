@@ -26,6 +26,7 @@ class Grid:
         return self.graph
 
     def update(self, time):
+        constants.next_peice = self.next_peice
         Peice.time = time
         self.handle_horizontal_lines()
         self.handle_vertical_lines(time)
