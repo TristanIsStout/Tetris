@@ -5,6 +5,7 @@ from Menu import Menu
 from Playground import Playground
 import constants
 
+
 class Painter:
 
     DEFAULT_DIMENSIONS = constants.SCREEN_DIMENSIONS

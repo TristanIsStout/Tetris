@@ -29,7 +29,11 @@ class Menu:
     def draw_caption(self):
         caption = self.caption_text + str(self.lines_scored)
         self.caption = self.font.render(caption, True, constants.WHITE)
-        self.layer.blit(self.caption, self.caption_position)
+        width,height = self.dimensions
+        caption_height = 30
+        self.caption_layer = pygame.Surface((width, caption_height))
+        self.caption_layer.blit(self.caption, constants.ORIGIN)
+        self.layer.blit(self.caption_layer, self.caption_position)
 
     def draw_next_peice_caption(self):
         self.caption = self.font.render(self.next_peice_text, True, constants.WHITE)
@@ -44,7 +48,8 @@ class Menu:
         self.layer.blit(caption, position)
     
     def update(self, more_lines):
-        self.lines_scored += more_lines
+        self.lines_scored = constants.lines
+        self.draw_caption()
 
     def get_toggle_sound(self):
         toggle = False

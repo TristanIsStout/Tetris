@@ -41,6 +41,8 @@ class Grid:
         for row in range(self.rows):
             if self.is_horizontal_line(row) and not self.peice.alive:
                 self.clear_row(row)
+                constants.lines += 1
+                print(constants.lines)
 
     def clear_row(self, row):
         self.remove(row)
