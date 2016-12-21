@@ -152,28 +152,50 @@ class Peice:
        if self.fall_counter >= self.FALL_AFTER:
             self.move(constants.DOWN)
             self.fall_counter = 0
+    
+    left_counter = 0
 
     def move_left(self):
         if self.pressed_keys[pygame.K_LEFT]:
-            self.move(constants.LEFT)
+            self.left_counter +=1
+            if self.left_counter > 1:
+                self.move(constants.LEFT)
+                self.left_counter = 0
+        else:
+            self.left_counter = 0
+
+    right_counter = 0
 
     def move_right(self):
         if self.pressed_keys[pygame.K_RIGHT]:
-            self.move(constants.RIGHT)
+            self.right_counter += 1
+            if self.right_counter > 1:
+                self.move(constants.RIGHT)
+                self.right_counter = 0
+        else: 
+            self.right_counter = 0
 
     def move_down(self):
         if self.pressed_keys[pygame.K_DOWN]:
             self.fall_counter += 10
 
+
+    rotate_counter = 0
+
     def rotate(self):
         if self.pressed_keys[pygame.K_UP]:
-            self.next_cells = self.get_rotated_cells()
-            self.remove()
-            if self.can_move_to_next():
-                self.move_to_next()
-            else:
-                self.replace()
-            self.next_cells = None
+            self.rotate_counter += 1
+            if self.rotate_counter > 1:
+                self.next_cells = self.get_rotated_cells()
+                self.remove()
+                if self.can_move_to_next():
+                    self.move_to_next()
+                else:
+                    self.replace()
+                self.next_cells = None
+                self.rotate_counter = 0
+        else: 
+            rotate_counter = 0
 
     def get_rotated_cells(self):
         rotated_cells = []

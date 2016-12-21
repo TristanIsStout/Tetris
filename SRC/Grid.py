@@ -19,6 +19,8 @@ class Grid:
     def create_peice(self):
         self.peice = Peice()
         self.peice.alive = True
+        self.next_peice = Peice()
+        self.next_peice.alive = False
 
     def get_graph(self):
         return self.graph
@@ -29,7 +31,10 @@ class Grid:
         if self.peice.alive:
             self.graph = self.peice.update(self.graph)
         else:
-            self.peice = Peice()
+            self.peice = self.next_peice
+            self.peice.alive = True
+            self.next_peice = Peice()
+            self.next_peice.alive = False
 
     def handle_horizontal_lines(self):
         for row in range(self.rows):
