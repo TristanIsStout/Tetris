@@ -47,3 +47,7 @@ SCREEN_DIMENSIONS = (SCREEN_WIDTH, SCREEN_HEIGHT)
 
 lines = 0
 next_peice = None
+START = 1
+RESTART = 2
+PLAY = 0
+game_mode = START

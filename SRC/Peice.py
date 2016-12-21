@@ -220,8 +220,8 @@ class Peice:
         x -= 8
         x = x * constants.BLOCK_SIZE
         y = y * constants.BLOCK_SIZE
-        width = constants.BLOCK_SIZE
-        height = constants.BLOCK_SIZE
+        width = constants.BLOCK_SIZE - 1
+        height = constants.BLOCK_SIZE - 1
         rect = (x, y, width, height)
         pygame.draw.rect(layer, constants.BLUE, rect)
 

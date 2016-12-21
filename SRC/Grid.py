@@ -43,7 +43,6 @@ class Grid:
             if self.is_horizontal_line(row) and not self.peice.alive:
                 self.clear_row(row)
                 constants.lines += 1
-                print(constants.lines)
 
     def clear_row(self, row):
         self.remove(row)
@@ -68,6 +67,7 @@ class Grid:
             self.clear()
             Peice.time_offset = time
             self.peice.alive = False
+            constants.game_mode = constants.RESTART
 
     def has_vertical_lines(self):
         has_vertical_line = False
