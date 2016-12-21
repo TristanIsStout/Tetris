@@ -39,10 +39,11 @@ class Engine:
         self.playtime += miliseconds / 1000.0
 
     def update_playing(self):
+        pressed = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            elif  pressed[pygame.K_ESCAPE]:
                 self.playing = False
 
 
