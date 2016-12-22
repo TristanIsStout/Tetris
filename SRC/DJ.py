@@ -4,7 +4,7 @@ import os
 class DJ:
 
     parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-    soundtrack = parent_dir + "/Tetris/MEDIA/theme.mp3"
+    soundtrack = "SRC/theme.mp3"
     playing = False
     
     def __init__(self):
