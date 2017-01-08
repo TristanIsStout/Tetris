@@ -100,12 +100,11 @@ class Peice:
         return self.grid
 
     def update_speed(self):
-        time = self.time - self.time_offset
-        if time < 10:
+        if constants.lines == 0:
             self.fall_threshold = self.SPEED_1
-        elif time < 20:
+        elif constants.lines == 1:
             self.fall_threshold = self.SPEED_2
-        elif time < 30:
+        elif constants.lines == 2:
             self.fall_threshold = self.SPEED_3
         else:
             self.fall_threshold = self.SPEED_4
